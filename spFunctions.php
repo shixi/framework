@@ -145,7 +145,8 @@ function spClass($class_name, $args = null, $sdir = null, $force_inst = FALSE){
 	}
 	if(FALSE != $has_define){
 		$argString = '';$comma = ''; 
-		if(null != $args)for ($i = 0; $i < count($args); $i ++) { $argString .= $comma . "\$args[$i]"; $comma = ', '; } 
+		if(null != $args)
+		foreach ($args as $argSubString) { $argString .= $comma . $argSubString; $comma = ', '; } 
 		eval("\$GLOBALS['G_SP']['inst_class'][\$class_name]= new \$class_name($argString);"); 
 		return $GLOBALS['G_SP']["inst_class"][$class_name];
 	}
